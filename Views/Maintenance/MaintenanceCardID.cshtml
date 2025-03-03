@@ -1,0 +1,25 @@
+@model MyDashboardApp.Models.Item;
+
+@using MyDashboardApp.Helpers;
+@{
+    ViewData["Title"] = "Maintenance Card by ID";
+}
+<div class="container">
+    <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(250px,1fr));grid-gap:1rem">
+
+        <div class="card" style="width:18rem;">
+            <div class="card__heading">
+                <h5 class="heading--small">
+                    Date: @DateHelper.FormatDate(DateTime.Parse(Model.Date))
+                </h5>
+            </div>
+            <h6 style="padding:0 10px; color:red">ID: @Model.Id</h6>
+            <div class="card__body">
+
+                <p class="card-text">@Model.Maintenance</p>
+
+            </div>
+        </div>
+
+    </div>
+</div>

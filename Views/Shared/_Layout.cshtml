@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MyDashboardApp</title>
+    
+    <link rel="stylesheet" href="~/css/framework.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/theme.css" asp-append-version="true" />
+   
+</head>
+<body>
+    <header class="header header--landing_page">
+        <!-- #Logo ---->
+        <div class="header__logo">
+            
+            <a class="header__logo__deptartment" asp-area="" asp-controller="Home" asp-action="Index">MyDashboardApp</a>
+            
+        </div>
+        
+        <nav class="header__main_menu">
+
+            <button id="menu_toggle" 
+                class="button button--blue" 
+                aria-expanded="false">
+                Menu
+            </button>
+            <div class="header__main_menu__container">
+                <div class="header__main_menu__container">
+                    <ul class="header--landing_page__menu">
+                        <li class="header--landing_page__menu__menu-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+
+                        <li class="header--landing_page__menu__menu-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+
+                        <li class="header--landing_page__menu__menu-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Test" asp-action="Index">Test</a>
+                        </li>
+                        <li class="header--landing_page__menu__menu-item"><a class="nav-link text-dark" asp-area="" asp-controller="Items" asp-action="CreateMaintenance">Create Maintenance Log</a>
+                            
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    
+    <main role="main" id="main" class="layout--one-column">
+        @RenderBody()
+    </main>
+    
+
+    <footer id="footer" class="footer">
+         <ul class="footer__menu">
+             <ul class="footer__menu">
+                <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+             </ul>
+         </ul>
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

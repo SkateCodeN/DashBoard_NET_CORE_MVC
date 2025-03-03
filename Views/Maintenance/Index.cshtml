@@ -1,0 +1,23 @@
+@model IEnumerable<MyDashboardApp.Models.Item>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Maintenance</th>
+            <th>Miles</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Date</td>
+                <td>@item.Maintenance</td>
+                <td>@item.Miles</td>
+            </tr>
+        }
+    </tbody>
+</table>

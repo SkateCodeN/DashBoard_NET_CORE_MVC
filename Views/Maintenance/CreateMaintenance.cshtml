@@ -1,0 +1,31 @@
+@model MyDashboardApp.Models.Item
+<script>
+    function confirmMaintenance() {
+        alert('Maintenance Log Created');
+        // Return true to allow form submission, or false to cancel it.
+        
+        return true;
+    }
+</script>
+
+<form asp-action="CreateMaintenance" asp-controller="Items" method="post" onsubmit="return confirmMaintenance();">
+    @Html.AntiForgeryToken()
+    <div style="width:200px">
+        <div>
+            <label asp-for="Date">Enter Date:</label>
+            <input asp-for="Date" type="date" />
+
+        </div>
+        <div>
+            <label asp-for="Miles">Enter Miles:</label>
+            <input asp-for="Miles" type="text" />
+        </div>
+        <div>
+            <label asp-for="Maintenance">Enter Maintenance:</label>
+            <textarea asp-for="Maintenance"></textarea>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-confirm">Create</button>
+        </div>
+    </div>
+</form>
