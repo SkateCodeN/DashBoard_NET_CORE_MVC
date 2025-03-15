@@ -4,6 +4,10 @@ using MyDashboardApp.Models;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
+// Notuce that the class name is ItemsController?
+// .net core ignores the Controller part but uses the Items part as
+// a way to reference the DB context <-- any referece to type Item 
+// comes from the Models/Maintenance.cs file
 public class ItemsController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -65,6 +69,9 @@ public class ItemsController : Controller
     // We need a create route
     [HttpPost]
     [ValidateAntiForgeryToken]
+    // We created a form in our view its called CreateMaintenance.
+    // Once we fill out and submit then this CreateMaintenance Task
+    // Once it is created we redirect to the Test view. 
     public async Task<ActionResult>CreateMaintenance(Item item)
     {
         _context.Items.Add(item);
@@ -76,6 +83,10 @@ public class ItemsController : Controller
     }
 
     //we can load the View once we hit the route
+    // Notice that the route is Items to reference this class
+    // the createmaintenance is the method name
+    // Items/CreateMaintenance
+    // 
     [HttpGet]
     public IActionResult CreateMaintenance()
     {
@@ -83,4 +94,25 @@ public class ItemsController : Controller
     }
     
     // We need an edit route 
+    ///Items/{id}
+    [HttpPut("{id}")]
+    public async Task<ActionResult>UpdateMainenanceLogById(int id, Item updatedlog)
+    {
+        if(id != updatedLog.id)
+        {
+            return BadRequest("ID does not match, check ID")
+        }
+
+        var existingLog = await _context.Items.FindAsync(id);
+
+        if(existingLog == null)
+        {
+            return NotFound();
+        }
+
+        _context.Entry(existingLog).CurrentValues.SetValues(updatedlog);
+            await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
 }
