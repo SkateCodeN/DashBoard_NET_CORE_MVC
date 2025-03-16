@@ -98,9 +98,9 @@ public class ItemsController : Controller
     [HttpPut("{id}")]
     public async Task<ActionResult>UpdateMainenanceLogById(int id, Item updatedlog)
     {
-        if(id != updatedLog.id)
+        if(id != updatedlog.Id)
         {
-            return BadRequest("ID does not match, check ID")
+            return BadRequest("ID does not match, check ID");
         }
 
         var existingLog = await _context.Items.FindAsync(id);
