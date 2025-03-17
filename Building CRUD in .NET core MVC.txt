@@ -1,0 +1,27 @@
+Building CRUD in .NET core MVC
+
+Breadcrums aka files I have touched and modified: 
+
+MyDashboardApp
+	Folders
+		Controllers
+			MaintenanceLogsController.cs
+		Data
+			MaintenanceLogsDbContext.cs
+		Models
+			Maintenance.cs
+
+		Views/Maintenance
+			
+			Index.cshtml
+			MaintenanceCardID.cshtml
+			Test.cshtml
+
+		wwwwroot/js
+			DeleteByIDHelper.js
+	
+
+	root
+	
+		appsettings.json
+		Program.cs

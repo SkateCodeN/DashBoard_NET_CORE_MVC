@@ -7,22 +7,25 @@
     <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(250px,1fr));grid-gap:1rem">
         @foreach (var item in Model)
         {
-            <div class="card" style="width:18rem;">
-                <div class="card__heading">
-                    <h5 class="heading--small">
-                        Date: @DateHelper.FormatDate(DateTime.Parse(@item.Date))
-                        </h5>
-                </div>
-                <h6 style="padding:0 10px; color:red">ID: @item.Id</h6>
-                <div class="card__body">
+            <div class="card">
+                <div class="card-content">
+                    <div class="content">
+                        <div>
+                            <h5>
+                                Date: @DateHelper.FormatDate(DateTime.Parse(@item.Date))
+                            </h5>
+                            
+                        </div>
+                        <p class="card-text">@item.Maintenance</p>
+                    </div>
 
-                    <p class="card-text">@item.Maintenance</p>
-
                 </div>
-                <div class="card__footer" >
+               
+                <div class="card-footer" >
+                    <h6 style=" color:red" class="card-footer-item">ID: @item.Id</h6>
                     <button 
                         type="button"
-                        class="btn btn-primary"
+                        class="card-footer-item"
                         onclick="location.href='@Url.Action("MaintenanceById","Items", new {id = item.Id})'"
                     >
                         Details
@@ -30,7 +33,7 @@
 
                     <button 
                         type="button"
-                        class="btn btn-primary"
+                        class="card-footer-item"
                         onclick="deleteItem(@item.Id)"
                     >
                         Delete
